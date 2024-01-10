@@ -1,2 +1,2 @@
 # Gee: A Gin-like web framework  
-Implementing following https://geektutu.com/post/gee.html
+Implemented following [Gee-Web](https://geektutu.com/post/gee.html)
