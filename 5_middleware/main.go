@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-func onlyForV2() gee.HandleFunc {
+func onlyForV2() gee.HandlerFunc {
 	return func(c *gee.Context) {
 		// Start timer
 		t := time.Now()

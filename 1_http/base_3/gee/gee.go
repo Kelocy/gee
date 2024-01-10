@@ -5,29 +5,29 @@ import (
 	"net/http"
 )
 
-type HandleFunc func(http.ResponseWriter, *http.Request)
+type HandlerFunc func(http.ResponseWriter, *http.Request)
 
 type Engine struct {
-	router map[string]HandleFunc
+	router map[string]HandlerFunc
 }
 
 // Constructor of gee.Engine
 func New() *Engine {
-	return &Engine{router: make(map[string]HandleFunc)}
+	return &Engine{router: make(map[string]HandlerFunc)}
 }
 
-func (engine *Engine) addRoute(method string, pattern string, handler HandleFunc) {
+func (engine *Engine) addRoute(method string, pattern string, handler HandlerFunc) {
 	key := method + "-" + pattern
 	engine.router[key] = handler
 }
 
 // GET
-func (engine *Engine) GET(pattern string, handler HandleFunc) {
+func (engine *Engine) GET(pattern string, handler HandlerFunc) {
 	engine.addRoute("GET", pattern, handler)
 }
 
 // POST
-func (engine *Engine) POST(pattern string, handler HandleFunc) {
+func (engine *Engine) POST(pattern string, handler HandlerFunc) {
 	engine.addRoute("POST", pattern, handler)
 }
 

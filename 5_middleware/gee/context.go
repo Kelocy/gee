@@ -19,7 +19,7 @@ type Context struct {
 	// Response info
 	StatusCode int
 	// Middleware
-	handlers []HandleFunc
+	handlers []HandlerFunc
 	index    int
 }
 

@@ -6,14 +6,14 @@ import (
 	"strings"
 )
 
-type HandleFunc func(*Context)
+type HandlerFunc func(*Context)
 
 type (
 	RouterGroup struct {
 		prefix      string
-		middlewares []HandleFunc // support middleware
-		parent      *RouterGroup // support nesting, point to engine
-		engine      *Engine      // all groups share a Engine instance
+		middlewares []HandlerFunc // support middleware
+		parent      *RouterGroup  // support nesting, point to engine
+		engine      *Engine       // all groups share a Engine instance
 	}
 
 	Engine struct {
@@ -44,23 +44,23 @@ func (group *RouterGroup) Group(prefix string) *RouterGroup {
 	return newGroup
 }
 
-func (group *RouterGroup) addRoute(method string, comp string, handler HandleFunc) {
+func (group *RouterGroup) addRoute(method string, comp string, handler HandlerFunc) {
 	pattern := group.prefix + comp
 	log.Printf("Route %4s - %s", method, pattern)
 	group.engine.router.addRoute(method, pattern, handler)
 }
 
 // GET
-func (group *RouterGroup) GET(pattern string, handler HandleFunc) {
+func (group *RouterGroup) GET(pattern string, handler HandlerFunc) {
 	group.addRoute("GET", pattern, handler)
 }
 
 // POST
-func (group *RouterGroup) POST(pattern string, handler HandleFunc) {
+func (group *RouterGroup) POST(pattern string, handler HandlerFunc) {
 	group.addRoute("POST", pattern, handler)
 }
 
-func (group *RouterGroup) Use(middlewares ...HandleFunc) {
+func (group *RouterGroup) Use(middlewares ...HandlerFunc) {
 	group.middlewares = append(group.middlewares, middlewares...)
 }
 
@@ -69,7 +69,7 @@ func (engine *Engine) RUN(addr string) (err error) {
 }
 
 func (engine *Engine) ServeHTTP(w http.ResponseWriter, req *http.Request) {
-	var middlewares []HandleFunc
+	var middlewares []HandlerFunc
 	// Get middlewares based on prefix
 	for _, group := range engine.groups {
 		if strings.HasPrefix(req.URL.Path, group.prefix) {
