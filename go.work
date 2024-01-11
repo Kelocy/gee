@@ -1,5 +1,5 @@
 go 1.21.3
 
 use (
-	./6_template
+	./7_panic
 )
