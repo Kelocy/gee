@@ -7,8 +7,11 @@ import (
 )
 
 func main() {
+	// Set router handler function
 	http.HandlerFunc("/", indexHandler)
 	http.HandlerFunc("/hello", helloHandler)
+
+	// Start HTTP server and listen port 9999
 	log.Fatal(http.ListenAndServe(":9999", nil))
 }
 
