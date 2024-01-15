@@ -1,5 +1,5 @@
 go 1.21.3
 
 use (
-	./7_panic
+	./go_cache/1_lru
 )
