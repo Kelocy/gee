@@ -1,5 +1,5 @@
 go 1.21.3
 
 use (
-	./go_cache/1_lru
+	./go_cache/2_single_node
 )
