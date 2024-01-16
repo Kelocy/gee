@@ -1,5 +1,5 @@
 go 1.21.3
 
 use (
-	./go_cache/2_single_node
+	./go_cache/3_http_server
 )
