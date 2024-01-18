@@ -1,5 +1,5 @@
 go 1.21.3
 
 use (
-	./gee_cache/4_consistent_hash
+	./gee_cache/5_distributed_nodes
 )
