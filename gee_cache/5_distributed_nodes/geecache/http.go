@@ -98,11 +98,15 @@ func (h *httpGetter) Get(group string, key string) ([]byte, error) {
 	return bytes, nil
 }
 
+var _ PeerGetter = (*httpGetter)(nil)
+
 // Set updates the pool's list of peers.
 func (p *HTTPPool) Set(peers ...string) {
 	p.mu.Lock()
 	defer p.mu.Unlock()
+	// Create new consistent hash for server
 	p.peers = consistenthash.New(defaultReplicas, nil)
+	// Add clients to consistent hash map
 	p.peers.Add(peers...)
 	p.httpGetters = make(map[string]*httpGetter, len(peers))
 	for _, peer := range peers {
