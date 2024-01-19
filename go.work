@@ -1,5 +1,5 @@
 go 1.21.3
 
 use (
-	./gee_cache/5_distributed_nodes
+	./gee_cache/6_single_flight
 )
