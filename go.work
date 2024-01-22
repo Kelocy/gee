@@ -1,5 +1,5 @@
 go 1.21.3
 
 use (
-	./gee_cache/7_proto_buf
+	./gee_orm/1_database_sql
 )
