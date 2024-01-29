@@ -25,6 +25,7 @@ func (s *Session) Insert(values ...interface{}) (int64, error) {
 	return result.RowsAffected()
 }
 
+// Find gets all eligible records
 func (s *Session) Find(values interface{}) error {
 	destSlice := reflect.Indirect(reflect.ValueOf(values))
 	dataType := destSlice.Type().Elem()
