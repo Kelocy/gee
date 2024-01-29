@@ -1,5 +1,5 @@
 go 1.21.3
 
 use (
-	./gee_orm/3_save_query
+	./gee_orm/4_chain_operation
 )
