@@ -1,5 +1,5 @@
 go 1.21.3
 
 use (
-	./gee_orm/4_chain_operation
+	./gee_orm/5_hooks
 )
