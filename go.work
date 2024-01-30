@@ -1,5 +1,5 @@
 go 1.21.3
 
 use (
-	./gee_orm/6_transaction
+	./gee_orm/7_migrate
 )
