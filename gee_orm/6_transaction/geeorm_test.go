@@ -43,6 +43,7 @@ func transactionRollback(t *testing.T) {
 		t.Fatal("failed to rollback")
 	}
 }
+
 func transactionCommit(t *testing.T) {
 	engine := OpenDB(t)
 	defer engine.Close()
