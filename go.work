@@ -1,5 +1,5 @@
 go 1.21.3
 
 use (
-	./gee_rpc/2_client
+	./gee_rpc/3_service
 )
