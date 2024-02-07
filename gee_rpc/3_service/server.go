@@ -69,7 +69,7 @@ func (server *Server) serveCodec(cc codec.Codec) {
 	for {
 		req, err := server.readRequest(cc)
 		if err != nil {
-			if req != nil {
+			if req == nil {
 				break // it's not possible to recover, so close the connection
 			}
 			req.h.Error = err.Error()
