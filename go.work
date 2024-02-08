@@ -1,5 +1,5 @@
 go 1.21.3
 
 use (
-	./gee_rpc/5_http
+	./gee_rpc/6_load_balance
 )
